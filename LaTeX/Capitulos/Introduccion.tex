@@ -1,0 +1,77 @@
+\chapter{Introducción}
+\label{cap:introduccion}
+\begin{resumen}
+	En este capítulo se hará una pequeña introducción a los juegos que implementan físicas imposibles y se explorará la razón por la que pueden generar interés en la industria del videojuego.
+\end{resumen}
+
+\section{Motivación}
+Dentro del sector de los videojuegos, uno de los géneros más antiguos es el género de puzles. Entre la basta cantidad de variaciones que tiene este género, existe un subgénero concreto, los juegos de puzles basados en físicas, habiendo algunos muy famosos como \cite{portal} o \citet{portal2}.
+
+Además, una de las tendencias de la industria estos últimos años, inspirada por \cite{zelda} y continuada en la secuela, \cite{zelda2}, ha sido la de introducir en juegos triple A de mundo abierto mecánicas de puzles y acertijos relacionados puramente con las físicas del mundo.
+
+La longevidad de este género, sumado a la tendencia de la industria, ha hecho que cada vez sea más difícil innovar en este ámbito, lo que ha llevado a algunos desarrolladores a crear juegos de este subgénero en los que introducen objetos (o la totalidad de los mismos) que se comportan con físicas imposibles.
+
+No obstante, dado que estos comportamientos pueden llegar a ser muy anti-intuitivos, se considera interesante la creación de una herramienta que ayude a los desarrolladores en esta tarea.
+
+
+\section{Aproximaciones al problema}
+Primero de todo, hemos de comprender que hay dos aproximaciones diferentes a la hora de implementar físicas imposibles en un videojuego: hacer un juego sobre un motor regido por geometrías no euclidianas o utilizar un motor común y emplear técnicas para generar la ilusión de físicas imposibles.
+
+\subsection{Geometrías euclidianas y no euclidianas}
+\cite{elementos} hizo cinco postulados que definían lo que se él, intuitivamente, entendía que era la geometría. Más adelante, \cite{hilbert} formalizó estos postulados en 21 axiomas (aunque posteriormente se demostró que uno de ellos era redundante).
+
+\com{Tengo la sensación de que no sé como utilizar las citas de manera correcta, espero que podamos hablarlo en algún momento y aclararlo}
+
+La geometría euclidiana es aquella que sigue los cinco postulados de Euclides (o más formalmente, los axiomas de Hilbert). Por ende, una geometría no euclidiana es cualquiera que no sigue uno de esos axiomas. No obstante, cuando hablamos de geometrías no euclidianas, usualmente nos referimos a hiperbólicas o elípticas, que únicamente cambian el quinto postulado, que es el siguiente:
+\\
+\textit{Si una recta secante corta a dos rectas formando a un lado ángulos interiores, la suma de los cuales sea menor que dos ángulos rectos; las dos rectas, suficientemente alargadas se cortarán en el mismo lado.}
+\\
+O, equivalentemente: \\
+\textit{Por un punto exterior a una recta, se puede trazar una única paralela.}
+
+Las geometrías hiperbólicas y elípticas cambian el quinto postulado afirmando que por un punto exterior a una recta se pueden trazar respectivamente infinitas paralelas o ninguna \citep{coxeter}.
+
+\subsection{Juegos implementados sobre físicas no euclidianas}
+La aproximación clásica de la física indica que el espacio sigue las reglas de la geometría euclidiana (aunque en realidad el espacio-tiempo se comporta según las reglas de una geometría no euclidiana, en escalas humanas esto no es apreciable, \cite{einstein}). Esto significa que los motores físicos en el campo de los videojuegos imitan este comportamiento euclidiano. No obstante, si pensamos en el espacio como algo curvo, con una geometría no euclidiana, dado que percibimos las cosas mediante líneas rectas (los rayos de luz), todo sería muy diferente.
+
+Todo esto indica que una aproximación válida para esto, aunque con un resultado muy lejano de lo intuitivo, es modificar un motor físico para que los objetos se perciban cómo si existiéramos en un espacio no euclidiano. Un juego que muestra esto es \cite{hyperbolica} \comp{No tengo muy claro como citar bibliográficamente a un videojuego ni a un video de youtube}. El proceso de creación de este juego podemos encontrarlo documentado en el canal de \textit{Youtube} del desarrollador, \cite{hyperbolica_devlog}.
+
+\subsection{Juegos con elementos imposibles}
+La segunda aproximación, más común y en la que se centrará este trabajo, es la de introducir elementos que no siguen las reglas de la física clásica en un juego, sin hacer que todas las físicas del juego trabajen bajo reglas de geometrías no euclidianas. Estos elementos pueden ser simplemente físicas imposibles (ya porque desafíen el concepto de gravedad o por ser espacios imposibles, como podemos ver en las figuras \ref{fig:penrose} y \ref{fig:relativity}) o elementos pertenecientes a físicas no euclidianas (como una habitación que es más grande por dentro que por fuera). No obstante, esta diferencia no tiene importancia ni en implementación ni en resultado (ya que al usuario no va a importarle si el efecto proviene de un objeto imposible o de una interpretación de la geometría no euclidiana).
+
+
+\figura{Bitmap/Introduccion/Penrose}{width=.25\textwidth}{fig:penrose}{Triángulo de Penrose}
+
+\figura{Bitmap/Introduccion/relativity}{width=.5\textwidth}{fig:relativity}{Escher, M. (1953). Relatividad}
+
+\section{Objetivos}
+\label{sec:Introduccion/Objetivos}
+Como se comentó en la sección anterior, este trabajo se centrará en desarrollar herramientas para facilitar la implementación de objetos que no sigan las leyes de la física habituales (la segunda aproximación de la sección anterior).
+En el capítulo \ref{cap:estadoDeLaCuestion} se estudiarán las mecánicas más comunes en juegos de este subgénero, y se concretará qué herramientas vamos a implementar.
+
+
+\section{Plan de trabajo}
+En esta sección describiremos las distintas fases que se seguirán para realizar este trabajo.
+
+\todo{Refinar}
+
+\subsection{Documentación y preparación}
+Esta fase se realizará antes de empezar el trabajo como tal y abarca los capítulos primero y segundo de este documento. Se recopila toda la información posible sobre físicas imposibles en juegos, se estudia qué tipos suelen ser usados y se deciden qué herramientas se van a desarrollar en base a la información obtenida.
+
+También se estudia qué recursos hay ya disponibles para crear este tipo de juegos (que corresponde al segundo capítulo del documento).
+
+\subsection{Implementación de las herramientas}
+Para cada herramienta descrita en la sección \ref{sec:estadoDeLaCuestion/Objetivos}, se creará las herramientas necesarias en Unity.
+
+\subsection{Documentar las herramientas}
+Para cada una de las herramientas implementadas, se hará una sección del documento en la que se expondrán las complicaciones y los detalles del desarrollo de las mismas.
+
+\subsection{Creación de la librería}
+Todas las herramientas se juntarán en una librería que estará disponible bajo una licencia MIT en \href{https://github.com/NotNoe/TFG}{este repositorio} de github.
+
+\subsection{Demo}
+Una vez tengamos todas las herramientas creadas, se creará una pequeña demo técnica que utilice todas las mecánicas implementadas.
+
+\subsection{Conclusiones}
+Por último, se hará un sumario de todo lo que se ha realizado en este trabajo, que quedará reflejado en el capítulo \ref{cap:conclusiones}.
+

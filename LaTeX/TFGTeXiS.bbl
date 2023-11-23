@@ -1,0 +1,67 @@
+\begin{thebibliography}{14}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{por(2011)}]{portal}
+Portal.
+\newblock [Edición Digital], 2011.
+
+\bibitem[{fez(2013)}]{fez}
+Fez.
+\newblock [Edición Digital], 2013.
+
+\bibitem[{zel(2017)}]{zelda}
+The legend of zelda: Breath of the wild.
+\newblock [Nintendo Switch Gamecard], 2017.
+
+\bibitem[{por(2017)}]{portal2}
+Portal 2.
+\newblock [Edición Digital], 2017.
+
+\bibitem[{hyp(2022)}]{hyperbolica}
+Hyperbolica.
+\newblock [Edición Digital], 2022.
+
+\bibitem[{mon(2022)}]{monument_valley}
+Monument valley.
+\newblock [Panoramic Edition], 2022.
+
+\bibitem[{zel(2023)}]{zelda2}
+The legend of zelda: Tears of the kingdom.
+\newblock [Nintendo Switch Gamecard], 2023.
+
+\bibitem[{CodeParade(2020)}]{hyperbolica_devlog}
+{\sc CodeParade}.
+\newblock Hyperbolica devlog.
+\newblock 2020.
+
+\bibitem[{Coxeter(1998)}]{coxeter}
+{\sc Coxeter, H.}
+\newblock {\em Non-Euclidean Geometry\/}.
+\newblock American Mathematical Society, 1998.
+
+\bibitem[{Einstein(2000)}]{einstein}
+{\sc Einstein, A.}
+\newblock {\em Meaning of Relativity\/}.
+\newblock ElecBook, 2000.
+
+\bibitem[{Euclides(1996)}]{elementos}
+{\sc Euclides}.
+\newblock {\em Elementos\/}.
+\newblock Editorial Gredos, 1996.
+
+\bibitem[{Francis(2020)}]{superliminal_article}
+{\sc Francis, B.}
+\newblock Designing the mind-bending perspective puzzles of superliminal.
+\newblock 2020.
+
+\bibitem[{Hilbert y Townsed(1921)}]{hilbert}
+{\sc Hilbert, D.} y {\sc Townsed, E.}
+\newblock {\em The foundations of geometry\/}.
+\newblock Chicago, Open court Pub. CO., 1921.
+
+\bibitem[{Kwan(2017)}]{monument_valley_video}
+{\sc Kwan, W.}
+\newblock Creating the monument valley illusion in unity.
+\newblock 2017.
+
+\end{thebibliography}

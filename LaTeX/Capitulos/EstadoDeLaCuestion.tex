@@ -1,0 +1,84 @@
+\chapter{Estado de la Cuestión}
+\label{cap:estadoDeLaCuestion}
+
+\begin{resumen}
+Para estudiar las mecánicas, así como las posibles implementaciones, lo más inmediato es obtenerlas de juegos que las utilicen.
+\end{resumen}
+
+\section{Mecánicas}
+
+Antes de estudiar las mecánicas de los juegos, tenemos que hacer una distinción. Tanto a nivel de \textit{gameplay} como a nivel de diseño, hay una gran diferencia entre juegos con una cámara móvil (ya sean en primera o tercera persona) y con cámara fija (por ejemplo juegos 2D o en perspectiva isométrica). Algunos ejemplos de juegos con cámara fija que podrían entrar en el tema de este trabajo son \cite{fez} o \cite{monument_valley}.
+
+En este trabajo no vamos a tratar este tipo de juegos por dos motivos. Por un lado, debido a las diferencias en el funcionamiento, las herramientas para implementar una misma mecánica en los dos tipos de juegos son completamente distintas. Además, debido a la naturaleza de estos juegos y de sus ilusiones, la mayoría de estas mecánicas se implementan utilizando trucos como duplicar objetos o eliminar texturas, que no son susceptibles de ser generalizados fuera de ese uso en concreto \citep{monument_valley_video}.
+
+\com{Esta es mi idea de qué voy a hacer y qué no, pero si lo ves conveniente, puede cambiarse. Es solo que me parece más interesante hacer una librería de herramientas para juegos en 1/3 persona antes que algo para cámaras fijas, que como ya vimos va mucho más sobre ruedas}
+
+\begin{multicols}{2}
+	\begin{itemize}
+		\item[$\bullet$] Portal (y su secuela)
+		\item[$\bullet$] Antichamber
+		\item[$\bullet$] Superliminal
+		\item[$\bullet$] Manifold Garden
+		\item[$\bullet$] Psychonauts 2
+		\item[$\bullet$] Viewfinder
+	\end{itemize}
+\end{multicols}
+
+De esta lista de videojuegos, podemos extraer una serie de mecánicas comunes, que estudiaremos individualmente.
+
+\subsection{Portales}
+\label{subsec:estadoDeLaCuestion/Mecanicas/Portales}
+Esta mecánica es la más simple e intuitiva de todas. Como ocurre en Portal (Figura \ref{fig:portal}) o Psychonauts 2, en ocasiones hay portales, que a nivel de implementación simplemente son parejas de objetos planos que, al entrar en contacto con un objeto, lo teletransportan a su pareja. Es importante para mantener la ilusión que la implementación mantenga propiedades como la velocidad (o para ser exactos, el módulo de la velocidad y el ángulo respecto del vector normal al portal). Dentro de las variaciones, los portales pueden dejar ver lo que hay al otro lado o no y pueden modificar propiedades como la gravedad o el tamaño.
+
+Respecto al trabajo existente en este campo, existe una implementación bajo licencia MIT en \href{https://github.com/codand/Unity3DPortals/}{este repositorio} que mejoraremos y añadiremos a nuestra librería \comp{En realidad esto está por ver, pero no tiene mucho sentido hacer algo que ya está hecho, menos aún si tiene licencia libre. La otra opción es hacer una implementación propia}.
+
+\todo{Si al final uso \href{https://www.youtube.com/watch?v=w-Z1Fx0LvDc}{este video} para algo, mencionarlo y añadirlo a la bibliografía}
+
+\figura{Bitmap/EstadoDeLaCuestion/portal}{width=.5\textwidth}{fig:portal}{Captura \textit{in-game} de Portal}
+
+\subsubsection{Habitaciones en espacios imposibles}
+Una mecánica que podemos ver en juegos como antichamber (Figura \ref{fig:antichamber}) es hacer que en una habitación, dependiendo por la zona por la que entremos (o por la que miremos), haya diferentes objetos dentro.
+
+Aunque no lo aparente, esto es solo un caso de uso más de los portales, pues se crea esa ilusión haciendo que cada entrada de la habitación sea en realidad un portal que lleve a otro sitio. Además con esta técnica también podemos crear la ilusión de que una habitación por dentro es más grande que por fuera.
+
+\figura{Bitmap/EstadoDeLaCuestion/antichamber}{width=.5\textwidth}{fig:antichamber}{Captura \textit{in-game} de Antichamber}
+
+\subsection{Perspectiva forzada}
+La perspectiva forzada es una de las ilusiones ópticas más habituales, en la que se aprovecha el hecho de que en una imagen plana no hay referencias para medir las distancias para generar la ilusión de que un objeto tiene un tamaño diferente al que realmente tiene. Podemos encontrar uno de los ejemplos más habituales de esto en la figura \ref{fig:pisa}.
+
+Esto como tal no es una mecánica imposible, es solo un efecto óptico, no obstante juegos como Superliminal modifican realmente el tamaño de un objeto que tenemos agarrado de forma que lo que en principio es una ilusión afecta realmente al tamaño de los objetos, como podemos observar en \ref{fig:perspectiva}.
+
+Respecto a la implementación de esta mecánica, sabemos gracias a \cite{superliminal_article} que es tan simple como intuitiva. Cuando llevamos un objeto en la mano, siempre se va a proyectar todo lo lejos que el escenario permita. La forma en la que se determina esta distancia es mediante el uso de una densa capa de \textit{raycast} para estimar la distancia a la que el objeto debe de estar. Luego simplemente se redimensiona el elemento, teniendo en cuenta la distancia inicial y la actual de este a la cámara.
+
+\figura{Bitmap/EstadoDeLaCuestion/pisa}{width=.5\textwidth}{fig:pisa}{Imagen de una turista en la torre de Pisa}
+
+\figura{Bitmap/EstadoDeLaCuestion/perspective}{width=.5\textwidth}{fig:perspectiva}{Pieza de ajedrez de gran tamaño debido a la perspectiva.}
+
+\subsection{Decal}
+Un \textit{Decal} o calcomanía es un efecto óptico simple que está implementado en Unity (solo si utilizamos HDRP) y que también aparece en varias librerías (como \href{https://github.com/Anatta336/driven-decals}{esta}). Es el resultado de proyectar una imagen plana sobre un objeto tridimensional, haciendo la ilusión de que la imagen está en tres dimensiones también, como podemos observar en la figura \ref{fig:peon}.
+
+\com{Esto que voy a poner ahora no sé si entraría dentro de la sección de Decal o, como me imagino que se implementará de una forma diferente, ponerlo en su propia sección}
+
+Esto puede hacerse de formas más complejas para crear, más que una ilusión óptica, una mecánica jugable. Al hacer el decal, podemos querer que en lugar de aparecer sobre una sola superficie, se reparta entre varias distintas (ver figura \ref{fig:decal}), y permitir al jugador coger ese objeto (que inicialmente es solo una textura) solo si está en la posición en la que se ve correctamente.
+
+\figura{Bitmap/EstadoDeLaCuestion/peon}{width=.3\textwidth}{fig:peon}{Calcomanía de un peón en Superliminal.}
+
+\figura{Bitmap/EstadoDeLaCuestion/decal}{width=.5\textwidth}{fig:decal}{Calcomanía de un cubo sobre varias superficies.}
+
+\subsection{Capturas de objetos}
+Como podemos encontrar en Viewfinder, otra mecánica muy interesante es la de tomar una captura de lo que tiene en pantalla el jugador en un momento dado, para posteriormente crear un duplicado de esos elementos desde la perspectiva del jugador, como podemos ver en \ref{fig:viewfinder}.
+
+\figura{Bitmap/EstadoDeLaCuestion/viewfinder}{width=.75\textwidth}{fig:viewfinder}{Proyección sobre la realidad de una fotografía tomada anteriormente.}
+
+\section{Objetivos}
+\label{sec:estadoDeLaCuestion/Objetivos}
+Habiendo visto las mecánicas que ofrecen los juegos que hemos estudiado, podemos finalmente hacer una lista con los objetivos que vamos a tener para este trabajo.
+
+\begin{description}
+	\item[Portales] \hfill \\ Se partirá del repositorio mencionado en \ref{subsec:estadoDeLaCuestion/Mecanicas/Portales}, se mejorará y se integrará en la librería.
+	\item[Perspectiva forzada] \hfill \\ Se implementarán un tipo de objetos que, mediante el mecanismo descrito en el artículo, permitan alterar su tamaño usando la perspectiva.
+	\item[Decal] \hfill \\ Se hará, modificando una librería ya existente, un \textit{decal} que permita proyectar sobre varios objetos. Además, utilizando esto, se creará una herramienta que permita al desarrollador crear objetos que aparezcan al estar en el punto adecuado introduciendo solamente el objeto a aparecer, el punto desde donde debe de verse y la dirección de la cámara sobre la que se proyectará este.
+	\item[Capturas] \hfill \\ Se implementará una herramienta que permita capturar el entorno actual para su posterior proyección en otro lugar.
+\end{description}
+
+\com{No sé si es demasiado ambicioso, pero me gustaría implementar una mecánica original además de todo esto, pero para eso primero se me tiene que ocurrir una mecánica...}

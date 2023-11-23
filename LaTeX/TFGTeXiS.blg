@@ -1,0 +1,76 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: TFGTeXiS.aux
+A level-1 auxiliary file: Cascaras/cover.aux
+A level-1 auxiliary file: Cascaras/dedicatoria.aux
+A level-1 auxiliary file: Cascaras/agradecimientos.aux
+A level-1 auxiliary file: Cascaras/resumen.aux
+A level-1 auxiliary file: Cascaras/abstract.aux
+A level-1 auxiliary file: Capitulos/Introduccion.aux
+A level-1 auxiliary file: Capitulos/EstadoDeLaCuestion.aux
+A level-1 auxiliary file: Capitulos/DescripcionTrabajo.aux
+A level-1 auxiliary file: Capitulos/ConclusionesTrabajoFuturo.aux
+A level-1 auxiliary file: Capitulos/Introduction.aux
+A level-1 auxiliary file: Capitulos/ConclusionsFutureWork.aux
+A level-1 auxiliary file: Cascaras/bibliografia.aux
+The style file: TeXiS/TeXiS.bst
+A level-1 auxiliary file: Apendices/appendixA.aux
+A level-1 auxiliary file: Apendices/appendixB.aux
+A level-1 auxiliary file: Cascaras/fin.aux
+Database file #1: biblio.bib
+Warning--entry type for "hyperbolica_devlog" isn't style-file defined
+--line 95 of file biblio.bib
+Warning--entry type for "monument_valley_video" isn't style-file defined
+--line 105 of file biblio.bib
+Warning--entry type for "superliminal_article" isn't style-file defined
+--line 115 of file biblio.bib
+Warning--to sort, need author or key in portal
+Warning--to sort, need author or key in portal2
+Warning--to sort, need author or key in zelda
+Warning--to sort, need author or key in zelda2
+Warning--to sort, need author or key in hyperbolica
+Warning--to sort, need author or key in fez
+Warning--to sort, need author or key in monument_valley
+Warning--can't use both author and editor fields in elementos
+You've used 14 entries,
+            2962 wiz_defined-function locations,
+            1147 strings with 13535 characters,
+and the built_in function-call counts, 4913 in all, are:
+= -- 430
+> -- 78
+< -- 7
++ -- 44
+- -- 24
+* -- 254
+:= -- 736
+add.period$ -- 35
+call.type$ -- 14
+change.case$ -- 74
+chr.to.int$ -- 14
+cite$ -- 36
+duplicate$ -- 415
+empty$ -- 448
+format.name$ -- 35
+if$ -- 1008
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 76
+newline$ -- 67
+num.names$ -- 28
+pop$ -- 202
+preamble$ -- 1
+purify$ -- 64
+quote$ -- 0
+skip$ -- 205
+stack$ -- 0
+substring$ -- 174
+swap$ -- 131
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 128
+warning$ -- 8
+while$ -- 21
+width$ -- 0
+write$ -- 154
+(There were 11 warnings)
